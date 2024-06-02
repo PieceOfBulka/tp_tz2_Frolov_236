@@ -18,28 +18,28 @@ public class Main {
         scanner.close();
         return list;
     }
-    public static long _min(ArrayList<Long> lst){
+    public static long min(ArrayList<Long> lst){
         long mn=lst.get(0);
         for (int i=1;i<lst.size();i++){
             if (mn>lst.get(i)) mn=lst.get(i);
         }
         return mn;
     }
-    public static long _max(ArrayList<Long> lst){
+    public static long max(ArrayList<Long> lst){
         long mx=lst.get(0);
         for (int i=1;i<lst.size();i++){
             if (mx<lst.get(i)) mx=lst.get(i);
         }
         return mx;
     }
-    public static long _sum(ArrayList<Long> lst){
+    public static long sum(ArrayList<Long> lst){
         long sm=0;
         for (int i=0;i<lst.size();i++){
             sm+= lst.get(i);
         }
         return sm;
     }
-    public static long _mult(ArrayList<Long> lst){
+    public static long mult(ArrayList<Long> lst){
         long mlt=1;
         for (int i=0;i<lst.size();i++){
             mlt*= lst.get(i);
@@ -54,9 +54,9 @@ public class Main {
         System.out.print("Введите имя файла: ");
         String name=sc.nextLine();
         ArrayList<Long> list=ReadFile(path+"/"+name);
-        System.out.println("Минимальное: "+_min(list));
-        System.out.println("Максимальное: "+_max(list));
-        System.out.println("Сумма: "+_sum(list));
-        System.out.println("Произведение: "+_mult(list));
+        System.out.println("Минимальное: "+ min(list));
+        System.out.println("Максимальное: "+ max(list));
+        System.out.println("Сумма: "+ sum(list));
+        System.out.println("Произведение: "+ mult(list));
     }
 }

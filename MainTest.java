@@ -1,28 +1,7 @@
-import org.junit.jupiter.api.Test;
-
-import javax.sound.sampled.Line;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.font.FontRenderContext;
-import java.awt.font.GlyphVector;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Line2D;
-import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
-import java.awt.image.ImageObserver;
-import java.awt.image.RenderedImage;
-import java.awt.image.renderable.RenderableImage;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadMXBean;
-import java.text.AttributedCharacterIterator;
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.Random;
-import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -49,7 +28,7 @@ class MainTest {
                 actual=arr.getLast();
             }
         }
-        long expected=Main._min(arr);
+        long expected=Main.min(arr);
 
         assertEquals(expected,actual);
     }
@@ -67,7 +46,7 @@ class MainTest {
                 actual=arr.getLast();
             }
         }
-        long expected=Main._max(arr);
+        long expected=Main.max(arr);
 
         assertEquals(expected,actual);
     }
@@ -83,7 +62,7 @@ class MainTest {
             arr.add(r.nextLong(1000000000));
             actual+=arr.getLast();
         }
-        long expected=Main._sum(arr);
+        long expected=Main.sum(arr);
 
         assertEquals(expected,actual);
     }
@@ -99,7 +78,7 @@ class MainTest {
             arr.add(r.nextLong(1000000000));
             actual*=arr.getLast();
         }
-        long expected=Main._mult(arr);
+        long expected=Main.mult(arr);
 
         assertEquals(expected,actual);
     }
@@ -119,7 +98,7 @@ class MainTest {
                 arr.add(r.nextLong(1000000000));
             }
             time = System.currentTimeMillis();
-            Main._min(arr);
+            Main.min(arr);
             System.out.println("Скорость работы при размере "+arr.size()+" элементов = "+(System.currentTimeMillis() - time)+" мс");
         }
     }
@@ -133,7 +112,7 @@ class MainTest {
                 arr.add(r.nextLong(1000000000));
             }
             time = System.currentTimeMillis();
-            Main._max(arr);
+            Main.max(arr);
             System.out.println("Скорость работы при размере "+arr.size()+" элементов = "+(System.currentTimeMillis() - time)+" мс");
         }
     }
@@ -147,7 +126,7 @@ class MainTest {
                 arr.add(r.nextLong(1000000000));
             }
             time = System.currentTimeMillis();
-            Main._sum(arr);
+            Main.sum(arr);
             System.out.println("Скорость работы при размере "+arr.size()+" элементов = "+(System.currentTimeMillis() - time)+" мс");
         }
     }
@@ -161,7 +140,7 @@ class MainTest {
                 arr.add(r.nextLong(1000000000));
             }
             time = System.currentTimeMillis();
-            Main._mult(arr);
+            Main.mult(arr);
             System.out.println("Скорость работы при размере "+arr.size()+" элементов = "+(System.currentTimeMillis() - time)+" мс");
         }
     }
@@ -188,7 +167,7 @@ class MainTest {
             actual*=arr.getLast();
         }
         long startCPUTime = getCpuTime();
-        Main._min(arr);
+        Main.min(arr);
         long endCPUTime = getCpuTime();
 
         long cpuTime = endCPUTime - startCPUTime;

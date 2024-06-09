@@ -10,13 +10,12 @@ class MainTest {
 
     //Понадобятся при тестах
     Random r=new Random();
-    long time;
 
 
     //Тесты для проверки корректности функций поиска минимума, максимума, сложения и умножения
 
     @org.junit.jupiter.api.Test
-    void _min() {
+    void min() {
         ArrayList<Long> arr=new ArrayList<>();
         int rnd=r.nextInt(100000);
         long actual=r.nextLong();
@@ -34,7 +33,7 @@ class MainTest {
     }
 
     @org.junit.jupiter.api.Test
-    void _max() {
+    void max() {
         ArrayList<Long> arr=new ArrayList<>();
         int rnd=r.nextInt(100000);
         long actual=r.nextLong();
@@ -52,7 +51,7 @@ class MainTest {
     }
 
     @org.junit.jupiter.api.Test
-    void _sum() {
+    void sum() {
         ArrayList<Long> arr=new ArrayList<>();
         int rnd=r.nextInt(100000);
         long actual=r.nextLong();
@@ -68,7 +67,7 @@ class MainTest {
     }
 
     @org.junit.jupiter.api.Test
-    void _mult() {
+    void mult() {
         ArrayList<Long> arr=new ArrayList<>();
         int rnd=r.nextInt(100000);
         long actual=r.nextLong();
@@ -81,97 +80,6 @@ class MainTest {
         long expected=Main.mult(arr);
 
         assertEquals(expected,actual);
-    }
-
-
-
-
-    //Тесты для проверки скорости работы программы при увеличении размера входного файла
-
-
-    @org.junit.jupiter.api.Test
-    void _minTimeTest() {
-        ArrayList<Long> arr=new ArrayList<>();
-        int size=1000;
-        for (int j=1;j<6;j++) {
-            for (int i = 0; i < size*(int)Math.pow(10,j); i++) {
-                arr.add(r.nextLong(1000000000));
-            }
-            time = System.currentTimeMillis();
-            Main.min(arr);
-            System.out.println("Скорость работы при размере "+arr.size()+" элементов = "+(System.currentTimeMillis() - time)+" мс");
-        }
-    }
-
-    @org.junit.jupiter.api.Test
-    void _maxTimeTest() {
-        ArrayList<Long> arr=new ArrayList<>();
-        int size=1000;
-        for (int j=1;j<6;j++) {
-            for (int i = 0; i < size*(int)Math.pow(10,j); i++) {
-                arr.add(r.nextLong(1000000000));
-            }
-            time = System.currentTimeMillis();
-            Main.max(arr);
-            System.out.println("Скорость работы при размере "+arr.size()+" элементов = "+(System.currentTimeMillis() - time)+" мс");
-        }
-    }
-
-    @org.junit.jupiter.api.Test
-    void _sumTimeTest() {
-        ArrayList<Long> arr=new ArrayList<>();
-        int size=1000;
-        for (int j=1;j<6;j++) {
-            for (int i = 0; i < size*(int)Math.pow(10,j); i++) {
-                arr.add(r.nextLong(1000000000));
-            }
-            time = System.currentTimeMillis();
-            Main.sum(arr);
-            System.out.println("Скорость работы при размере "+arr.size()+" элементов = "+(System.currentTimeMillis() - time)+" мс");
-        }
-    }
-
-    @org.junit.jupiter.api.Test
-    void _multTimeTest() {
-        ArrayList<Long> arr=new ArrayList<>();
-        int size=1000;
-        for (int j=1;j<6;j++) {
-            for (int i = 0; i < size*(int)Math.pow(10,j); i++) {
-                arr.add(r.nextLong(1000000000));
-            }
-            time = System.currentTimeMillis();
-            Main.mult(arr);
-            System.out.println("Скорость работы при размере "+arr.size()+" элементов = "+(System.currentTimeMillis() - time)+" мс");
-        }
-    }
-
-
-
-    //Тесты для проверки времени процессорного исполнения программы
-
-    //Метод для подсчета времени процессора
-    private static long getCpuTime() {
-        ThreadMXBean bean = ManagementFactory.getThreadMXBean();
-        return bean.isCurrentThreadCpuTimeSupported() ? bean.getCurrentThreadCpuTime() : 0L;
-    }
-
-
-    @org.junit.jupiter.api.Test
-    void _minCPUTest(){
-        ArrayList<Long> arr=new ArrayList<>();
-        int rnd=r.nextInt(10000000);
-        long actual=r.nextLong();
-        arr.add(actual);
-        for (int i=0;i<rnd;i++){
-            arr.add(r.nextLong(1000000000));
-            actual*=arr.getLast();
-        }
-        long startCPUTime = getCpuTime();
-        Main.min(arr);
-        long endCPUTime = getCpuTime();
-
-        long cpuTime = endCPUTime - startCPUTime;
-        System.out.println("Процессорное время: " + cpuTime + " наносекунд");
     }
 
 
